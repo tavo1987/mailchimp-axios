@@ -1,6 +1,6 @@
 <template>
     <div class="form">
-        <form action="store" method="POST" id="lead" @submit.prevent="submit" ref="form">
+        <form action="store" method="POST" id="lead" @submit.prevent="subscribe" ref="form">
             <label>
                 Name
                 <input v-validate="'required'" type="text" name="name" v-model="name">
@@ -22,10 +22,6 @@
 <script>
     import axios from 'axios';
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
-
         data() {
             return {
                 name: null,
@@ -41,27 +37,29 @@
                         this.$refs.form.submit();
                     }
                 });
+            },
+
+            subscribe() {
+                let data = new FormData();
+                data.append('email', this.email);
+                data.append('name', this.name);
+                data.append('status', this.status);
+
+                axios({
+                    method :'post',
+                    url : 'http://mailchimp.dev/subscribe',
+                    data   : data
+                })
+                .then(function (response) {
+                    alert('success');
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             }
         },
 
-        subscribe() {
-            axios({
-                method :'post',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                url : 'http://mailchimp.dev/store',
-                data   : `name=${this.name}&email=${this.email}&status=${this.status}`,
-            })
-            .then(function (response) {
-                alert('success');
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
     }
 </script>
 
