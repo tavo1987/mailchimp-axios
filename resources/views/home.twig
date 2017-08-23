@@ -1,0 +1,12 @@
+
+{% extends 'layout.twig'%}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section>
+        {{ include('partials/alerts.twig')}}
+        <h2>Example form with Vuejs</h2>
+        <app-form></app-form>
+    </section>
+{% endblock %}

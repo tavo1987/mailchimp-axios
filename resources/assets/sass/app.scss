@@ -1,0 +1,34 @@
+/*===============================================*\
+    $STYLE
+\*===============================================*/
+
+/*
+ Aquí incluímos todos los módulos (archivos .scss) que se van
+ a compilar en el CSS definitivo: /css/style.css.
+*/
+
+//Foundation
+@import "foundation/settings";
+@import "node_modules/foundation-sites/scss/foundation";
+@import "foundation/modules";
+
+//librerias
+@import "lib/settings";
+@import "lib/mixins";
+@import "lib/placeholders";
+
+
+//base del sitio web
+@import "base/sitio";
+
+//modulos
+@import "abstractions/buttons";
+@import "abstractions/pagination";
+
+//elements
+@import "elements/forms";
+
+//theme
+@import "theme/header";
+@import "theme/thanks";
+

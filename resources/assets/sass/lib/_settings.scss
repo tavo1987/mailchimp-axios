@@ -1,0 +1,53 @@
+/*
+    =================================================================
+        $SETTINGS
+    =================================================================
+*/
+
+// BREAKPOINTS
+$breakpoints-sp :(
+   'mobile'     : 28.75em,
+   'smartphone' : 40em,
+   'tablet'     : 48em,
+   'desktop'    : 64em,
+   'hd'         : 100em,
+)!default;
+
+// $variables generales de colores
+
+$base-color         :#2199e8; //celeste
+$secondary-color       : rgba(#726F7A,80);
+$complementary-color: #f7f7f7;
+
+//backgrouund colors
+$bg-color: darken(#F1F1F1,1%);
+
+
+// $colores
+$white:     #fff;
+$black:     #000;
+$dark:      #222;
+$dark-light: #333;
+$gray:      #ccc;
+$dark-gray: darken($gray,25%);
+$success:   #5cb85c;
+$danger:   lighten(red,10);
+
+
+//colores fuentes
+$font-color:      rgba(#726F7A,70);
+$title-color:     #343436;
+$link-color:      #2199e8;
+$link-color-hover: darken($link-color,10);
+
+
+// $Fuente
+$font-size:     16;
+$font-family:   'Open Sans', sans-serif !important;
+
+
+// $ancho maximo
+$max-width:     62.5rem; //1000px
+
+//border radius
+$radius:        3px;
