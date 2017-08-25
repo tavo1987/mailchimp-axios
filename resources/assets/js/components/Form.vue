@@ -1,6 +1,7 @@
 <template>
     <div class="form">
-        <form action="store" method="POST" id="lead" @submit.prevent="subscribe" ref="form">
+        <form action="store" method="POST" id="lead" @submit.prevent="submit" ref="form">
+            <pre v-if="lead">{{ lead.name }}</pre>
             <label>
                 Name
                 <input v-validate="'required'" type="text" name="name" v-model="name">
@@ -20,13 +21,13 @@
 </template>
 
 <script>
-    import axios from 'axios';
     export default {
         data() {
             return {
                 name: null,
                 email: null,
-                status: 'subscribed'
+                status: 'subscribed',
+                lead: null,
             }
         },
 
@@ -34,7 +35,15 @@
             submit() {
                 this.$validator.validateAll().then(result => {
                     if (result) {
-                        this.$refs.form.submit();
+                        axios.post('/store', {
+                            name: this.name,
+                            email: this.email
+                        }).then( response => {
+                            this.lead = response.data;
+                            console.log('success lead craeted');
+                        }).catch(error => {
+                            console.log(error);
+                        });
                     }
                 });
             },
@@ -51,11 +60,10 @@
                     data   : data
                 })
                 .then(function (response) {
-                    alert('success');
-                    console.log(response);
+                    console.log(response.data);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error.data);
                 });
             }
         },

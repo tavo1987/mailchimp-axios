@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
-
+import axios from 'axios'
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -20,9 +20,9 @@ const app = new Vue({
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-/* window.axios = axios;
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.baseUrl = 'https://us16.api.mailchimp.com/3.0'; */
+window.axios = axios;
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+//window.axios.baseUrl = 'https://us16.api.mailchimp.com/3.0'; */
 
 
 
