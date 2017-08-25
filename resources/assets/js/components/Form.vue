@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import qs from 'qs';
     export default {
         data() {
             return {
@@ -35,10 +36,8 @@
             submit() {
                 this.$validator.validateAll().then(result => {
                     if (result) {
-                        axios.post('/store', {
-                            name: this.name,
-                            email: this.email
-                        }).then( response => {
+                        axios.post('/store', qs.stringify(this.$data))
+                        .then( response => {
                             this.lead = response.data;
                             console.log('success lead craeted');
                         }).catch(error => {

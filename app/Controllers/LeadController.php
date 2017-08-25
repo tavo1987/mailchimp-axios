@@ -35,18 +35,9 @@ class LeadController extends BaseController
 
     public function store()
     {
-        $data = file_get_contents('php://input');
+        http_response_code(201);
+        return json_encode($_POST);
 
-        header_remove();
-        http_response_code(200);
-        // set the header to make sure cache is forced
-        header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
-        // treat this as json
-        header('Content-Type: application/json;charset=utf-8');
-
-        return $data;
-
-        $request = (object) cleanRequest($_POST);
         $errors = $this->validate($_POST, $this->rules, $this->labels);
 
         if ($errors) {
