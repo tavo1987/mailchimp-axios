@@ -5,8 +5,12 @@
 
 {% block content %}
     <section>
-        {{ include('partials/alerts.twig')}}
-        <h2>Example form with Vuejs</h2>
-        <app-form></app-form>
+        <div class="row">
+            {{ include('partials/alerts.twig')}}
+            <h2>Example form with Vuejs</h2>
+            <div class="columns small-12">
+                <app-form></app-form>
+            </div>
+        </div>
     </section>
 {% endblock %}

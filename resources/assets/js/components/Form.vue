@@ -17,56 +17,72 @@
 
            <button class="button" type="submit">Enviar</button>
         </form>
+        <p>Example button</p>
+        <back-button @back="goBack">Back</back-button>
     </div>
 </template>
 
 <script>
-    import qs from 'qs';
-    export default {
-        data() {
-            return {
-                name: null,
-                email: null,
-                status: 'subscribed',
-                lead: null,
-            }
+import qs from 'qs';
+import BackButton from './BackButton.vue';
+
+export default {
+    data() {
+        return {
+            name: null,
+            email: null,
+            status: 'subscribed',
+            lead: null,
+        }
+    },
+
+    mounted () {
+    },
+
+    components: {
+        BackButton
+    },
+
+
+    methods: {
+        goBack() {
+            return true;
         },
 
-        methods: {
-            submit() {
-                this.$validator.validateAll().then(result => {
-                    if (result) {
-                        axios.post('/store', qs.stringify(this.$data))
-                        .then( response => {
-                            this.lead = response.data;
-                            console.log('success lead craeted');
-                        }).catch(error => {
-                            console.log(error);
-                        });
-                    }
-                });
-            },
-
-            subscribe() {
-                let data = new FormData();
-                data.append('email', this.email);
-                data.append('name', this.name);
-                data.append('status', this.status);
-
-                axios({
-                    method :'post',
-                    url : 'http://mailchimp.dev/subscribe',
-                    data   : data
-                })
-                .then(function (response) {
-                    console.log(response.data);
-                })
-                .catch(function (error) {
-                    console.log(error.data);
-                });
-            }
+        submit() {
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                    axios.post('/store', qs.stringify(this.$data))
+                    .then( response => {
+                        this.lead = response.data;
+                        console.log('success lead craeted');
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+            });
         },
 
-    }
+        subscribe() {
+            let data = new FormData();
+            data.append('email', this.email);
+            data.append('name', this.name);
+            data.append('status', this.status);
+
+            axios({
+                method :'post',
+                url : 'http://mailchimp.dev/subscribe',
+                data   : data
+            })
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error.data);
+            });
+        }
+    },
+
+}
 </script>
 

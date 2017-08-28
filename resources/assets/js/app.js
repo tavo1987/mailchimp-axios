@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import axios from 'axios'
+import Turbolinks from 'turbolinks';
+
+Turbolinks.start()
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,4 +41,6 @@ WebFont.load({
         families: ['Open Sans:300,400,700']
     }
 });
+
+
 
