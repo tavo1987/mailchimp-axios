@@ -6,6 +6,8 @@ class ThanksController
 {
     public function index()
     {
+        sleep(3);
+
         return view('thanks.twig');
     }
 }
